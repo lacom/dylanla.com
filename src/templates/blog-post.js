@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
 
-import { Header } from '../components';
+import { ArticleFooter } from '../components';
 import { rhythm, scale } from '../utils/typography';
 
 export default function BlogPostTemplate({ data }) {
@@ -42,6 +42,11 @@ export default function BlogPostTemplate({ data }) {
           marginBottom: rhythm(1),
         }}
       />
+      <ArticleFooter
+        authors={post.frontmatter.authors}
+        path={post.frontmatter.path}
+        title={post.frontmatter.title}
+      />
     </div>
   );
 }
@@ -61,9 +66,10 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        title
         authors
+        date(formatString: "MMMM DD, YYYY")
+        path
+        title
       }
     }
   }

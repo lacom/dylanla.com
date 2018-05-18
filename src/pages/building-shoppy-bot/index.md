@@ -4,6 +4,7 @@ date: "2017-10-26T00:00:00.000Z"
 path: "/developing-the-natural-language-understanding-behind-shoppy-bot/"
 type: post
 authors: ["Carl Mueller"]
+featuredImage: search_trie.jpg
 ---
 
 **Lightning in a Bot's first product, [Shoppy Bot](https://shoppybot.com), is a natural language chatbot that Shopify store owners can use to query their business data.** The natural language interface is a novel approach to reporting and analytics in a backend retail setting, and one we hypothesis can provide faster and more efficient access to important data.
@@ -59,8 +60,7 @@ Any machine learning technique is powerless without data. Data must be curated i
 Similar words are used repeatedly for similar user intents. It plays to Bolt’s advantage that queries are often specific to the task at hand, which limits the amount of noise (overlap of categories) and number of outliers (single data points invading deep into the region of a different category). This means that the distinction between one category and another in our geometric space is sharp. I won’t go too deep into how SVM’s work, but I suggest Wikipedia as a good starting point.
 
 ![Alt][1]
-
-*A hyperplane (which is a standard flat plane in three dimensions) separating two categories distinguished by red and blue spheres.*
+*A hyperplane (which is a standard flat plane in three dimensions) separating two categories distinguished by red and blue spheres. [Source](https://i.stack.imgur.com/zeRTm.png)*
 
 #### Slot Detection
 Slot detection sometimes blurs the line between entity parsing and recognition. It can help to think of named entity recognition (NER), where one parses a product name, city and state etc., as a subset of slot detection. Slots can be a feature of the entire piece of text being analyzed or a localized span of text. One example of a slot that spans the entirety of a user query would be plurality. For example, if the user asks, “Who is my top customer?”, Bolt is able to recognize that the person is asking for only one customer, without needing any explicit number to exist in the query. These results are passed back to Shoppy Bot where a response is sent to the user with the results for one customer. 
@@ -73,6 +73,7 @@ Named entity recognition is the probably the most well-known aspect of informati
 The data structure that Bolt’s gazetteer uses is called a trie. In this scenario, a trie is an ordered tree structure that stores strings compactly, where each node of the tree is an object or structure that stores the current letter, potentially a word, and references or pointers to the next node. The idea is that in traversing a branch of the trie, you slowly build up a word letter by letter. Words that share the same prefix will start along the same branch.
 
 ![Alt][2]
+*[Source](http://images.slideplayer.com/32/9814580/slides/slide_5.jpg)*
 
 This data structure allows one to check if a word is in a dictionary extremely quickly but also allows for additional algorithms to function during the search process. Hash lookups for words are generally the fastest mechanism for dictionary lookups. However, if you want to perform string similarity comparisons while searching for a word in a dictionary at the same time, the search trie is your best bet. This allows for robust dictionary lookup of words pulled from the query to see if they match (or are close to matching) the words stored in the trie. Ultimately this is a very robust way to perform fuzzy dictionary lookups. 
 
@@ -98,5 +99,5 @@ Bolt first classifies the user’s query to an intent. Each intent is associated
 
 This post provided a fairly indepth overview of some of the theory and implementation details that go into making the Bolt NLU system function. Natural language understanding is exploding and becoming more advanced day by day. The intent-slot paradigm for NLU is a robust and relatively simplistic approach to NLU that can be achieved fairly easily with some simple and clever algorithms and engineering. With this approach, we're able to provide an NLU system that outperforms other cloud-based solutions on the market, and offer a more sophisticated chatbot experience. 
 
-[1]: https://i.stack.imgur.com/zeRTm.png "Hyperplane separating two categories"
-[2]: http://images.slideplayer.com/32/9814580/slides/slide_5.jpg "String search trie"
+[1]: /images/hyperplane.png "Hyperplane separating two categories"
+[2]: /images/search_trie.jpg "String search trie"

@@ -1,7 +1,36 @@
 module.exports = {
   siteMetadata: {
-    title: "Lightning in a Bot"
+    title: 'Lightning in a Bot',
+    productData: [
+      {
+        name: 'Shoppy Bot',
+        description: 'A friendly chat bot to manage your Shopify data',
+        url: 'https://shoppybot.com',
+        releaseDate: 'Oct 2016',
+        image: 'shoppybot.png'
+      },
+    ],
+    serviceData: [
+      {
+        name: 'Web Development',
+        description: '',
+        subServices: [
+          {
+            name: 'Node.js'
+          },
+          {
+            name: 'Python / Django'
+          },
+          {
+            name: 'React'
+          }
+        ],
+        url: '',
+        image: ''
+      }
+    ]
   },
+  pathPrefix: '/',
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,

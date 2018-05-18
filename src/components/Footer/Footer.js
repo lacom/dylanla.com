@@ -9,7 +9,7 @@ export default function Footer() {
     <footer>
       <div className="container">
         <div className="content">
-          &copy; {config.title}
+          &copy; {config.title}, Inc.
         </div>
       </div>
     </footer>

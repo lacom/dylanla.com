@@ -11,7 +11,7 @@ export default class ArticleCard extends Component {
 
   render() {
     const { post } = this.props;
-    const { title, date, path } = post.frontmatter;
+    const { title, date, path, featuredImage } = post.frontmatter;
 
     return (
       <article className="article-card">
@@ -19,7 +19,12 @@ export default class ArticleCard extends Component {
           className="article-card-anchor"
           to={path}
         >
-          <span className="article-card-background" />
+          <span
+            className="article-card-background"
+            style={ featuredImage ? { backgroundImage: `url(${__PATH_PREFIX__}/images/${featuredImage})` } : {}}
+          >
+            <span className="article-card-sheen" />
+          </span>
           <span className="article-card-inner">
             <h2 className="article-card-title">{title}</h2>
             <span className="article-card-meta">

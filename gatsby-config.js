@@ -1,6 +1,45 @@
 module.exports = {
   siteMetadata: {
     title: 'Lightning in a Bot',
+    siteUrl: 'https://lightninginabot.com',
+    description: 'The latest Lightning in a Bot posts coming at you from Los Angeles, California.',
+    clients: [
+      {
+        name: 'The Social Life',
+        image: 'the_social_life.png',
+        url: 'https://thesociallife.com/',
+      },
+      {
+        name: 'Shoptiques',
+        image: 'shoptiques.png',
+        url: 'https://www.shoptiques.com/',
+      },
+      {
+        name: 'United Way of Greater Los Angeles',
+        image: 'uwgla.png',
+        url: 'https://www.unitedwayla.org/',
+      },
+      {
+        name: 'Wellen',
+        image: 'wellen.png',
+        url: 'https://wellensurf.com/',
+      },
+      {
+        name: 'Ergon',
+        image: 'ergon.png',
+        url: 'http://www.ergon-bike.com/',
+      },
+      {
+        name: 'Pour This',
+        image: 'pour_this.png',
+        url: 'https://www.pour-this.com/',
+      },
+      {
+        name: 'Western Rise',
+        image: 'western_rise.png',
+        url: 'https://westernrise.com/',
+      },
+    ],
     productData: [
       {
         name: 'Shoppy Bot',
@@ -68,6 +107,9 @@ module.exports = {
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-feed`
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,

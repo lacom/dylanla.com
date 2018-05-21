@@ -1,9 +1,58 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import twitterLogoSrc from '../../images/twitter.svg';
 import facebookLogoSrc from '../../images/facebook.svg';
 import config from '../../config';
+
+
+// Styled components
+const StyledArticleFooter = styled.div`
+  display: flex;
+  color: #c1c1c1;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+
+  & a {
+    color: #c1c1c1;
+    text-decoration: none;    
+  }
+
+  & a:hover {
+    text-decoration: underline;
+  }
+`;
+const FooterLeftContent = styled.div`
+  flex: 1 0;
+`;
+const FooterRightContent = styled.div`
+  flex: 1 0;
+`;
+const SocialShareLinksList = styled.ul`
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &>li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 0 0 5px;
+    padding: 0;
+  }
+
+  &>li>a {
+    background-size: 20px;
+    background-position-y: 2px;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    display: block;
+  }  
+`;
 
 export default class ArticleFooter extends Component {
   static propTypes = {
@@ -30,33 +79,31 @@ export default class ArticleFooter extends Component {
     const url = `${config.url}${path}`;
 
     return (
-      <div className="article-footer">
-        <div>
+      <StyledArticleFooter>
+        <FooterLeftContent>
           <span>By {authors.join(', ')}</span>
-        </div>
-        <ul className="social-share-links">
-          <li>
-            <a
-              className="social-share-link-twitter"
-              href={`https://twitter.com/intent/tweet?text=${encodedTitle}&amp;url=${url}`}
-              onClick={this.handleTwitterClick}
-              style={{ backgroundImage: `url(${twitterLogoSrc})` }}
-            >
-              Tweet
-            </a>
-          </li>
-          <li>
-            <a
-              className="social-share-link-facebook"
-              href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
-              onClick={this.handleFacebookClick}
-              style={{ backgroundImage: `url(${facebookLogoSrc})` }}
-            >
-              Share
-            </a>
-          </li>
-        </ul>
-      </div>
+        </FooterLeftContent>
+        <FooterRightContent>
+          <SocialShareLinksList>
+            <li>
+              <a
+                className="social-share-link-twitter"
+                href={`https://twitter.com/intent/tweet?text=${encodedTitle}&amp;url=${url}`}
+                onClick={this.handleTwitterClick}
+                style={{ backgroundImage: `url(${twitterLogoSrc})` }}
+              >Tweet</a>
+            </li>
+            <li>
+              <a
+                className="social-share-link-facebook"
+                href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+                onClick={this.handleFacebookClick}
+                style={{ backgroundImage: `url(${facebookLogoSrc})` }}
+              >Share</a>
+            </li>
+          </SocialShareLinksList>
+        </FooterRightContent>
+      </StyledArticleFooter>
     );
   }
 }

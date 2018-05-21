@@ -3,50 +3,78 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
+import styled, { css } from 'styled-components';
 
-import { ArticleFooter } from '../components';
+import { ArticleCoverAbout, ArticleFooter } from '../components';
 import { rhythm, scale } from '../utils/typography';
+
+
+// Styled components
+const ArticleContainer = styled.div`
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 1.5em 0;
+`;
+const PostTitle = styled.h1`
+  font-size: 2em;
+  line-height: 1.1em;
+  margin-bottom: 1em;
+`;
+const ArticleEndHorizontalRule = styled.hr`
+  margin-bottom: 1em;
+`;
+const PostDate = styled.p`
+  font-size: 0.9em;
+`;
+const CoverImageContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+const CoverImage = styled.img`
+  max-width: 100px;
+`;
+const PostContent = styled.div`
+
+  & img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  & blockquote {
+    font-size: 0.9rem;
+  }  
+`;
+
 
 export default function BlogPostTemplate({ data }) {
   const { markdownRemark: post } = data;
   const siteTitle = get(data, 'site.siteMetadata.title');
 
   return (
-    <div
-      style={{
-        maxWidth: rhythm(26),
-        padding: '1.5em 1em',
-        margin: 'auto'
-      }}
-    >
+    <div>
       <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-      <h1 className="post-title">
-        {post.frontmatter.title}
-      </h1>
-      <p
-        style={{
-          ...scale(-1 / 5),
-          display: "block",
-          marginBottom: rhythm(1),
-          marginTop: rhythm(-1),
-        }}
-      >
-        {post.frontmatter.date}
-      </p>
-      <div
-        className="post-content"
-        dangerouslySetInnerHTML={{ __html: post.html }}
-      />
-      <hr
-        style={{
-          marginBottom: rhythm(1),
-        }}
-      />
-      <ArticleFooter
-        authors={post.frontmatter.authors}
-        path={post.frontmatter.path}
-        title={post.frontmatter.title}
-      />
+      <ArticleContainer>
+        <CoverImageContainer>
+          <Link to="/">
+            <CoverImage src={`${__PATH_PREFIX__}/images/${post.frontmatter.featuredImage}`} />
+          </Link>
+        </CoverImageContainer>
+        <PostTitle>{post.frontmatter.title}</PostTitle>
+        <PostDate>{post.frontmatter.date}</PostDate>
+        <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+        <ArticleEndHorizontalRule />
+        <ArticleFooter
+          authors={post.frontmatter.authors}
+          path={post.fields.slug}
+          title={post.frontmatter.title}
+        />
+        <ArticleCoverAbout
+          text={post.frontmatter.coverDesc}
+          img={post.frontmatter.featuredImage}
+        />
+      </ArticleContainer>
     </div>
   );
 }
@@ -56,20 +84,24 @@ BlogPostTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query BlogPostByPath($slug: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         authors
         date(formatString: "MMMM DD, YYYY")
-        path
         title
+        featuredImage
+        coverDesc
       }
     }
   }

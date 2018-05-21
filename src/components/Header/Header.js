@@ -20,6 +20,7 @@ const StyledHeader = styled.header`
   background-color: #FFF;
   height 50px;
   z-index: 9999;
+  border-bottom: 1px solid black;
 
   ${media.xsmall`
     width: 300px;
@@ -27,6 +28,7 @@ const StyledHeader = styled.header`
     justify-content: flex-start;
     padding-left: 4em;
     height: 75px;    
+    border: none;
   `}
   ${media.small`
     width: 400px;

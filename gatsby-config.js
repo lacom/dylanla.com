@@ -49,25 +49,87 @@ module.exports = {
         tags: ['shoppy bot', 'natural language understanding'],
       },
     ],
-    serviceData: [
-      {
-        name: 'Web Development',
-        description: '',
-        subServices: [
-          {
-            name: 'Node.js'
-          },
-          {
-            name: 'Python / Django'
-          },
-          {
-            name: 'React'
-          }
-        ],
-        url: '',
-        image: ''
-      }
-    ]
+    serviceData: {
+      services: [
+        {
+          name: 'Web Apps',
+          description: '',
+        },
+        {
+          name: 'Shopify Apps',
+          description: '',
+        },
+        {
+          name: 'Data Management',
+          description: '',
+        },
+        {
+          name: 'Data Integrations',
+          description: '',
+        },
+        {
+          name: 'CMS Development',
+          description: '',
+        },
+        {
+          name: 'Machine Learning',
+          description: '',
+        },
+        {
+          name: 'Process Consulting',
+          description: '',
+        },
+        {
+          name: 'Process Automation',
+          description: '',
+        },
+        {
+          name: 'Project Management',
+          description: '',
+        },        
+      ],
+      tools: [
+        {
+          name: 'Node.js / Javascript'
+        },
+        {
+          name: 'Python'
+        },
+        {
+          name: 'HTML5'
+        },
+        {
+          name: 'CSS3'
+        },
+        {
+          name: 'Django Web Framework'
+        },
+        {
+          name: 'Flask Web Framework'
+        },
+        {
+          name: 'Express Web Framework'
+        },
+        {
+          name: 'React JS'
+        },
+        {
+          name: 'Redux JS'
+        },
+        {
+          name: 'PostgreSQL'
+        },
+        {
+          name: 'MongoDB'
+        },
+        {
+          name: 'AWS'
+        },
+        {
+          name: 'Heroku'
+        }
+      ]
+    }
   },
   pathPrefix: '/',
   plugins: [

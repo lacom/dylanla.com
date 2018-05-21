@@ -53,8 +53,8 @@ export default function Things({ data }) {
             {posts
               .filter(({ node: post}) => post.frontmatter.tags.some(tag => product.tags.includes(tag)))
               .map(({ node: post}) => (
-                <ArticleCardContainer>
-                  <ArticleCard key={post.id} post={post} size="small" />
+                <ArticleCardContainer key={post.id}>
+                  <ArticleCard post={post} size="small" />
                 </ArticleCardContainer>
               ))}
           </ProductPostsContainer>

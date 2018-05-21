@@ -9,7 +9,7 @@ import media from '../utils/mediaQueryTemplates';
 
 
 // Styled components
-const ContentContainer = styled.p`
+const ContentContainer = styled.div`
   max-width: 50em;
 `;
 const ServiceList = styled.ul`

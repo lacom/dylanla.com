@@ -6,6 +6,7 @@ authors: ["Carl Mueller"]
 draft: false
 featuredImage: canny_lichen_resized.png
 coverDesc: "The cover started as a photo of lichen on rock to which we applied canny edge detection to outline the texture of the rock and plant."
+tags: ["shoppy bot", "natural language understanding"]
 ---
 
 **Lightning in a Bot's first product, [Shoppy Bot](https://shoppybot.com), is a natural language chatbot that Shopify store owners can use to query their business data.** The natural language interface is a novel approach to reporting and analytics in a backend retail setting, and one we hypothesis can provide faster and more efficient access to important data.

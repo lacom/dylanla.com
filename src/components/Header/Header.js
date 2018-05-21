@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
 
@@ -71,8 +72,20 @@ export default class Header extends PureComponent {
     this.state = { showMobileMenu: false };
   }
 
-  toggleMobileMenu = (e) => {
-    e.preventDefault();
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+  };
+
+  componentWillReceiveProps(nextProps) {
+    const { location: currLocation } = this.props;
+    const { location: newLocation } = nextProps;
+    // Close responsive menu when location changes
+    if (this.state.showMobileMenu && (currLocation.pathname !== newLocation.pathname)) {
+      this.setState({ showMobileMenu: false });
+    }
+  }
+
+  toggleMobileMenu = () => {
     const { showMobileMenu } = this.state;
     this.setState({ showMobileMenu: !showMobileMenu });
   }

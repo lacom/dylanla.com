@@ -19,6 +19,19 @@ const StyledArticle = styled.article`
   overflow: hidden;
   transition: all .15s ease-in;
 
+  /* Adjust for size of card */
+  ${props => props.size === 'small' && `
+    max-width: 150px;
+
+    & h2 {
+      font-size: 1em;
+    }
+
+    & a {
+      padding: 0.6em;
+    }
+  `}
+
   &:hover {
     opacity: 0.85;
   }
@@ -62,37 +75,42 @@ const ArticleCardTitle = styled.h2`
   margin-bottom: auto;
   color: ${readableColor('#000')}
   font-size: 2.3em;
-  line-height: 1.1em;
+  line-height: 1.1em; 
 
   ${media.xsmall`
     font-size: 2.7em;
   `} 
   ${media.small`
     font-size: 2.1em;
-  `} 
+  `}
 `;
 const ArticleCardMeta = styled.span`
   margin-top: auto;
-  color: ${rgba(readableColor('#000'), 0.7)}
+  color: ${rgba(readableColor('#000'), 0.7)};
+
+  ${props => props.size === 'small' && `
+    display: none;
+  `}
 `;
 
 export default class ArticleCard extends Component {
   static propTypes = {
-    post: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    size: PropTypes.oneOf(['small']),
   };
 
   render() {
-    const { post } = this.props;
+    const { post, size } = this.props;
     const { slug } = post.fields;
     const { title, date, featuredImage } = post.frontmatter;
 
     return (
-      <StyledArticle>
+      <StyledArticle size={size}>
         {featuredImage && (<ArticleImage src={`${__PATH_PREFIX__}/images/${featuredImage}`} />)}
         <ArticleCardLink to={slug}>
           <ArticleCardContent>
             <ArticleCardTitle>{title}</ArticleCardTitle>
-            <ArticleCardMeta>
+            <ArticleCardMeta size={size}>
               <span>{date}</span>
             </ArticleCardMeta>            
           </ArticleCardContent>

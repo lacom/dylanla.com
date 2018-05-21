@@ -29,10 +29,26 @@ const StyledNavLink = styled(Link)`
 export default function NavLinks() {
   return (
     <span>
-      <StyledNavLink to="/things" title="We hope you like!">things we made</StyledNavLink>
-      <StyledNavLink to="/help-us-help-you" title="We would like to help you out!">what we can do for you</StyledNavLink>
-      <StyledNavLink to="/about" title="About">about</StyledNavLink>
-      <StyledNavLink to="/contact" title="Contact">contact</StyledNavLink>
+      <StyledNavLink
+        to="/things"
+        title="We hope you like!"
+        activeStyle={{ color: 'rgba(0,0,0,0.3)'}}
+      >things we made</StyledNavLink>
+      <StyledNavLink
+        activeStyle={{ color: 'rgba(0,0,0,0.3)'}}
+        to="/help-us-help-you"
+        title="We would like to help you out!"
+      >what we can do for you</StyledNavLink>
+      <StyledNavLink
+        to="/about"
+        title="About"
+        activeStyle={{ color: 'rgba(0,0,0,0.3)'}}
+      >about</StyledNavLink>
+      <StyledNavLink
+        to="/contact"
+        title="Contact"
+        activeStyle={{ color: 'rgba(0,0,0,0.3)'}}
+      >contact</StyledNavLink>
     </span>
   );
 }

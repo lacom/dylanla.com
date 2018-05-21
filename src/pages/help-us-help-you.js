@@ -59,7 +59,6 @@ export const pageQuery = graphql`
           description
           url
           image
-          releaseDate
         }
       }
     }

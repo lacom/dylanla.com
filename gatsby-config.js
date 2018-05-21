@@ -43,10 +43,10 @@ module.exports = {
     productData: [
       {
         name: 'Shoppy Bot',
-        description: 'A friendly chat bot to manage your Shopify data',
+        description: 'Shoppy Bot is a Shopify app that gives store owners a unique data reporting solution. The project\'s goal was to give businesses a more user-friendly and time-saving user experience over traditional reporting tools by leveraging state-of-the-art natural language understanding to process report requests.',
         url: 'https://shoppybot.com',
-        releaseDate: 'Oct 2016',
-        image: 'shoppybot.png'
+        image: 'shoppybot.png',
+        tags: ['shoppy bot', 'natural language understanding'],
       },
     ],
     serviceData: [

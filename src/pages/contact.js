@@ -22,7 +22,7 @@ export default function Contact({ data }) {
         <section>
           <h3>Get in touch...</h3>
           <address>
-            Email: <a href="mailto:hello@lightninginabot.com" subject="Hi">hello@lightninginabot.com</a><br />
+            Email: <a href="mailto:hello@lightninginabot.com?subject=Hi">hello@lightninginabot.com</a><br />
             Phone: +1 213 357-2045
           </address>
         </section>        

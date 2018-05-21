@@ -27,10 +27,10 @@ const StyledContent = styled.div`
   `}
 `;
 
-export default function Template({ children }) {
+export default function Template({ children, location }) {
   return (
     <StyledLayoutContainer>
-      <Header />
+      <Header location={location} />
       <StyledContentLayout>
         <Sidebar />
         <StyledContent>
@@ -43,5 +43,6 @@ export default function Template({ children }) {
 };
 
 Template.propTypes = {
-  children: PropTypes.func
+  children: PropTypes.func,
+  location: PropTypes.object.isRequired,
 };

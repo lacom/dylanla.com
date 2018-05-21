@@ -33,10 +33,6 @@ const StyledWall = styled.div`
 `;
 
 
-function getArticleCards(posts) {
-  return posts.map(({ node: post}) => (<ArticleCard key={post.id} post={post} />));
-}
-
 export default function BlogIndex({ data }) {
   const siteTitle = get(data, 'site.siteMetadata.title');
   const { edges: posts } = data.allMarkdownRemark;
@@ -45,7 +41,7 @@ export default function BlogIndex({ data }) {
     <div>
       <Helmet title={siteTitle} />
       <StyledWall>
-        {getArticleCards(posts)}
+        {posts.map(({ node: post}) => (<ArticleCard key={post.id} post={post} />))}
       </StyledWall>
     </div>
   );

@@ -1,8 +1,6 @@
-# gatsby-starter-blog
-Gatsby starter for creating a blog
+# Lightning in a Bot website
 
-Install this starter (assuming Gatsby is installed) by running from your CLI:
-`gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog`
+[lightninginabot.com](https://lightninginabot.com)
 
-## Running in development
+## Running Gatsby in development
 `gatsby develop`

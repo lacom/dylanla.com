@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Button } from '../../components';
 import config from '../../config';
 
 export default function ContactForm() {
@@ -15,7 +16,7 @@ export default function ContactForm() {
       <textarea name="message" placeholder="Message"></textarea>
       <input type="hidden" name="_next" value={config.formSubmittedURL} />
       <input type="text" className="hidden" name="_gotchya" />
-      <button type="submit">Send</button>
+      <Button type="submit">Send</Button>
     </form>
   );
 }

@@ -27,8 +27,12 @@ export default function ArticleCoverAbout({ text, img }) {
     <Container>
       <h3>About the Cover</h3>
       <ContentContainer>
-        <CoverImage sizes={img.childImageSharp.sizes} />
-        <p>{text}</p>
+        <div>
+          <CoverImage sizes={img.childImageSharp.sizes} />
+        </div>
+        <div>
+          <p>{text}</p>
+        </div>
       </ContentContainer>
     </Container>
   );

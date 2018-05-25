@@ -28,7 +28,7 @@ export default function About({ data }) {
         </section>
         <section>
           <p>Some of our wonderful clients include:</p>
-          <ClientsList clients={clients} />
+          <ClientsList clients={clients} images={data.allFile.edges} />
         </section>
         <section>
           <h3>About this website</h3>
@@ -55,5 +55,18 @@ export const pageQuery = graphql`
         }
       }
     }
+    # Fetch all images from the client_logos filesystem query directory
+    allFile(filter: { sourceInstanceName: {eq: "client_logos" }}) {
+      edges {
+        node {
+          childImageSharp {
+            sizes(maxWidth: 120) {
+              ...GatsbyImageSharpSizes
+              originalName
+            }
+          }
+        }
+      }
+    }    
   }
 `;

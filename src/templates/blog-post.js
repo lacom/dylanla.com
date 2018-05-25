@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import Link from 'gatsby-link';
 import get from 'lodash/get';
 import styled, { css } from 'styled-components';
+import Img from 'gatsby-image';
 
 import { ArticleCoverAbout, ArticleFooter } from '../components';
 import { rhythm, scale } from '../utils/typography';
@@ -27,12 +28,11 @@ const PostDate = styled.p`
   font-size: 0.9em;
 `;
 const CoverImageContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 2em;
 `;
-const CoverImage = styled.img`
+const CoverImage = styled(Img)`
+  display: block;
+  margin: 0 auto;
   max-width: 100px;
 `;
 const PostContent = styled.div`
@@ -58,7 +58,7 @@ export default function BlogPostTemplate({ data }) {
       <ArticleContainer>
         <CoverImageContainer>
           <Link to="/">
-            <CoverImage src={`${__PATH_PREFIX__}/images/${post.frontmatter.featuredImage}`} />
+            <CoverImage sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
           </Link>
         </CoverImageContainer>
         <PostTitle>{post.frontmatter.title}</PostTitle>
@@ -100,8 +100,14 @@ export const pageQuery = graphql`
         authors
         date(formatString: "MMMM DD, YYYY")
         title
-        featuredImage
         coverDesc
+        featuredImage {
+          childImageSharp {
+            sizes(maxWidth: 100) {
+              ...GatsbyImageSharpSizes
+            }
+          }
+        }
       }
     }
   }

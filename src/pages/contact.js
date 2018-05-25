@@ -5,6 +5,8 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import { ContactForm } from '../components';
+import config from '../config';
+import mapImageSrc from '../images/map.png';
 
 const ContentContainer = styled.div`
   max-width: 40em;
@@ -22,7 +24,7 @@ export default function Contact({ data }) {
         <section>
           <h3>Get in touch...</h3>
           <address>
-            Email: <a href="mailto:hello@lightninginabot.com?subject=Hi">hello@lightninginabot.com</a><br />
+            Email: <a href={`mailto:${config.contactEmail}?subject=Hi`}>{config.contactEmail}</a><br />
             Phone: +1 213 357-2045
           </address>
         </section>        
@@ -38,7 +40,7 @@ export default function Contact({ data }) {
             Los Angeles, CA 90012
           </address>
           <a href="https://www.google.com/maps/place/201+S+Santa+Fe+Ave,+Los+Angeles,+CA+90012/data=!4m2!3m1!1s0x80c2c63eee80aa4f:0xdf404f872993ee1f?sa=X&ved=0ahUKEwiJwYWL0pPbAhVY3GMKHf4-B-4Q8gEIJjAA" target="_blank" title="This is us">
-          <img src={`${__PATH_PREFIX__}/images/map.png`} />
+          <img src={mapImageSrc} />
           </a>
         </section>
       </ContentContainer>

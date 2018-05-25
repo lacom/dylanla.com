@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TypographyStyle } from 'react-typography';
-import 'typeface-montserrat';
+import 'typeface-source-sans-pro';
 import 'typeface-merriweather';
 
 import typography from './utils/typography';
 
 let stylesStr
-if (process.env.NODE_ENV === `production`) {
+if (process.env.NODE_ENV === 'production') {
   try {
-    stylesStr = require(`!raw-loader!../public/styles.css`);
+    stylesStr = require('!raw-loader!../public/styles.css');
   } catch (e) {
     console.log(e);
   }

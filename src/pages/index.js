@@ -68,9 +68,15 @@ export const pageQuery = graphql`
           frontmatter {
             authors
             date(formatString: "MMM DD, YYYY")
-            featuredImage
             title
             type
+            featuredImage {
+              childImageSharp {
+                sizes(maxWidth: 640) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "author": "Dylan La Com <dylan@lightninginabot.com>",
   "dependencies": {
-    "gatsby": "^1.0.0",
+    "gatsby": "^1.9.261",
+    "gatsby-image": "^1.0.51",
     "gatsby-link": "^1.0.0",
     "gatsby-plugin-feed": "^1.3.22",
     "gatsby-plugin-google-analytics": "^1.0.0",
@@ -25,12 +26,12 @@
     "polished": "^1.9.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-typography": "^0.15.0",
+    "react-typography": "^0.16.13",
     "styled-components": "^3.2.6",
-    "typeface-merriweather": "^0.0.25",
-    "typeface-montserrat": "^0.0.24",
-    "typography": "^0.15.8",
-    "typography-theme-us-web-design-standards": "^0.15.10"
+    "typeface-merriweather": "0.0.54",
+    "typeface-source-sans-pro": "0.0.54",
+    "typography": "^0.16.17",
+    "typography-theme-us-web-design-standards": "^0.16.9"
   },
   "scripts": {
     "dev": "gatsby develop",
@@ -40,5 +41,6 @@
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
-  }
+  },
+  "devDependencies": {}
 }

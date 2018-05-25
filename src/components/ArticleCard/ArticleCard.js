@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import styled, { css } from 'styled-components';
 import { readableColor, rgba } from 'polished';
+import Img from 'gatsby-image';
 
 import { rhythm, scale } from '../../utils/typography';
 import media from '../../utils/mediaQueryTemplates';
@@ -11,10 +12,11 @@ import media from '../../utils/mediaQueryTemplates';
 // Styled components
 const StyledArticle = styled.article`
   position: relative;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   /* No cross browser 'break-inside' property being supported yet: */
   display: inline-block;
   background: black;
+  width: 100%;
   max-height: 680px;
   overflow: hidden;
   transition: all .15s ease-in;
@@ -58,7 +60,7 @@ const ArticleCardLink = styled(Link)`
   left: 0;
   padding: 1.5em;
 `;
-const ArticleImage = styled.img`
+const ArticleImage = styled(Img)`
   width: 100%;
   opacity: 0.9;
   margin: 0;
@@ -106,7 +108,7 @@ export default class ArticleCard extends Component {
 
     return (
       <StyledArticle size={size}>
-        {featuredImage && (<ArticleImage src={`${__PATH_PREFIX__}/images/${featuredImage}`} />)}
+        {featuredImage && (<ArticleImage sizes={featuredImage.childImageSharp.sizes} />)}
         <ArticleCardLink to={slug}>
           <ArticleCardContent>
             <ArticleCardTitle>{title}</ArticleCardTitle>

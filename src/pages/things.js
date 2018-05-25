@@ -26,11 +26,20 @@ const ProductPostsContainer = styled.div`
   margin-top: 2em;
 `;
 const ArticleCardContainer = styled.div`
-  display: inline-block;
   margin-right: 15px;
 `;
 const ProductDesc = styled.p`
   max-width: 40em;
+`;
+const RelatedArticlesList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  &>li {
+    display: inline;
+    margin-right: 1em;
+  }
 `;
 
 
@@ -43,20 +52,19 @@ export default function Things({ data }) {
     (<ProductsList>
       {products.map((product, idx) => (
         <ProductItem key={idx}>
-          <div className="item-header">
-            <StyledH2>{product.name}</StyledH2>
-          </div>
+          <StyledH2>{product.name}</StyledH2>
           <ProductDesc>{product.description}</ProductDesc>
           <a href={product.url} title={product.name} target="_blank">Link</a>
           <ProductPostsContainer>
             <StyledH4>Read More About {product.name}</StyledH4>
+            <RelatedArticlesList>
             {posts
               .filter(({ node: post}) => post.frontmatter.tags.some(tag => product.tags.includes(tag)))
               .map(({ node: post}) => (
-                <ArticleCardContainer key={post.id}>
+                <li key={post.id}>
                   <ArticleCard post={post} size="small" />
-                </ArticleCardContainer>
-              ))}
+                </li>))}
+            </RelatedArticlesList>
           </ProductPostsContainer>
         </ProductItem>
       ))}
@@ -99,10 +107,16 @@ export const pageQuery = graphql`
           frontmatter {
             authors
             date(formatString: "MMM DD, YYYY")
-            featuredImage
             title
             type
             tags
+            featuredImage {
+              childImageSharp {
+                sizes(maxWidth: 150) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

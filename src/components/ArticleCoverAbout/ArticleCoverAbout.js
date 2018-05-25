@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 
 
 // Styled components
@@ -14,11 +15,11 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
-const CoverImage = styled.img`
+const CoverImage = styled(Img)`
   width: 100px;
   height: 100%;
   vertical-align: middle;
-  margin-right: 2em;
+  margin: 0 2em 0 0;
 `;
 
 export default function ArticleCoverAbout({ text, img }) {
@@ -26,7 +27,7 @@ export default function ArticleCoverAbout({ text, img }) {
     <Container>
       <h3>About the Cover</h3>
       <ContentContainer>
-        <CoverImage src={`${__PATH_PREFIX__}/images/${img}`} />
+        <CoverImage sizes={img.childImageSharp.sizes} />
         <p>{text}</p>
       </ContentContainer>
     </Container>
@@ -34,6 +35,6 @@ export default function ArticleCoverAbout({ text, img }) {
 }
 
 ArticleCoverAbout.propTypes = {
-  img: PropTypes.string.isRequired,
+  img: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired,
 };

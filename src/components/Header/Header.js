@@ -51,6 +51,9 @@ const StyledExpandIcon = styled.span`
   font-weight: 600;
   transition: all .15s ease-in;
 
+  /* Remove gray highlight on touch-device tap */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+
   ${props => props.menuVisible && 'transform: rotate(-45deg);'}
 `;
 const ResponsiveMenu = styled.div`

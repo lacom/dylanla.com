@@ -1,25 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
-import Link from 'gatsby-link';
-import get from 'lodash/get';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Img from 'gatsby-image';
 
+import Layout from '../components/Layout';
 import { ArticleCoverAbout, ArticleFooter } from '../components';
-import { rhythm, scale } from '../utils/typography';
+import media from '../utils/mediaQueryTemplates';
 
 
 // Styled components
 const ArticleContainer = styled.div`
-  max-width: 40em;
-  margin: 0 auto;
-  padding: 1.5em 0;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+
+  ${media.small`
+    margin-left: 80px;
+    padding: 0;
+  `}
 `;
+const Article = styled.div`
+  max-width: 100%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  
+  ${media.small`
+    max-width: 40em;
+    margin-right: 2em;
+  `}
+`;
+const ArticleHeader = styled.div`
+  padding-bottom: 1em;
+`;
+const ArticleHeadings = styled.div``;
 const PostTitle = styled.h1`
   font-size: 2em;
   line-height: 1.1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 `;
 const ArticleEndHorizontalRule = styled.hr`
   margin-bottom: 1em;
@@ -28,15 +45,20 @@ const PostDate = styled.p`
   font-size: 0.9em;
 `;
 const CoverImageContainer = styled.div`
-  margin-bottom: 2em;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
+  display: none;
+
+  ${media.small`
+    display: block;
+  `}
 `;
 const CoverImage = styled(Img)`
-  display: block;
-  margin: 0 auto;
-  max-width: 100px;
+  width: 640px;
+  overflow-x: hidden;
 `;
 const PostContent = styled.div`
-
   & img {
     display: block;
     margin: 0 auto;
@@ -48,34 +70,36 @@ const PostContent = styled.div`
 `;
 
 
-export default function BlogPostTemplate({ data }) {
+export default function BlogPostTemplate({ data, location }) {
   const { markdownRemark: post } = data;
-  const siteTitle = get(data, 'site.siteMetadata.title');
 
   return (
-    <div>
-      <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+    <Layout location={location} pageTitle={post.frontmatter.title}>
       <ArticleContainer>
+        <Article>
+          <ArticleHeader>
+            <ArticleHeadings>
+              <PostTitle>{post.frontmatter.title}</PostTitle>
+              <PostDate>{post.frontmatter.date}</PostDate>
+            </ArticleHeadings>
+          </ArticleHeader>
+          <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
+          <ArticleEndHorizontalRule />
+          <ArticleFooter
+            authors={post.frontmatter.authors}
+            path={post.fields.slug}
+            title={post.frontmatter.title}
+          />
+          <ArticleCoverAbout
+            text={post.frontmatter.coverDesc}
+            img={post.frontmatter.featuredImage}
+          />
+        </Article>
         <CoverImageContainer>
-          <Link to="/">
-            <CoverImage sizes={post.frontmatter.featuredImage.childImageSharp.sizes} />
-          </Link>
+          <CoverImage fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
         </CoverImageContainer>
-        <PostTitle>{post.frontmatter.title}</PostTitle>
-        <PostDate>{post.frontmatter.date}</PostDate>
-        <PostContent dangerouslySetInnerHTML={{ __html: post.html }} />
-        <ArticleEndHorizontalRule />
-        <ArticleFooter
-          authors={post.frontmatter.authors}
-          path={post.fields.slug}
-          title={post.frontmatter.title}
-        />
-        <ArticleCoverAbout
-          text={post.frontmatter.coverDesc}
-          img={post.frontmatter.featuredImage}
-        />
       </ArticleContainer>
-    </div>
+    </Layout>
   );
 }
 
@@ -85,11 +109,6 @@ BlogPostTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query BlogPostByPath($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
@@ -103,8 +122,8 @@ export const pageQuery = graphql`
         coverDesc
         featuredImage {
           childImageSharp {
-            sizes(maxWidth: 100) {
-              ...GatsbyImageSharpSizes
+            fluid(maxHeight: 1000) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

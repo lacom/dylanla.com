@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 
 import { NavLinks } from '../../components';
 import config from '../../config';
-import { rhythm, scale } from '../../utils/typography';
+import { scale } from '../../utils/typography';
 import media from '../../utils/mediaQueryTemplates';
 
 
@@ -30,9 +32,6 @@ const StyledHeader = styled.header`
     height: 75px;    
     border: none;
   `}
-  ${media.small`
-    width: 400px;
-  `}  
 `;
 const ResponsiveMenuTrigger = styled.div`
   width: 12%;
@@ -79,6 +78,7 @@ export default class Header extends PureComponent {
 
   static propTypes = {
     location: PropTypes.object.isRequired,
+    pageTitle: PropTypes.string,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -96,32 +96,50 @@ export default class Header extends PureComponent {
   }
 
   render () {
+    const { pageTitle } = this.props;
+
     return (
-      <div>
-        <StyledHeader>
-          <Link
-            style={{
-              ...scale(0.4),
-              display: "inline-block",
-              marginTop: 0,
-              boxShadow: "none",
-              textDecoration: "none",
-              color: "inherit",
-            }}
-            to={"/"}
-          >{config.title}
-          </Link>
-          <ResponsiveMenuTrigger>
-            <StyledExpandIcon
-              onClick={this.toggleMobileMenu}
-              menuVisible={this.state.showMobileMenu}
-            >&#43;</StyledExpandIcon>
-          </ResponsiveMenuTrigger>
-        </StyledHeader>
-        <ResponsiveMenu visible={this.state.showMobileMenu}>
-          <NavLinks />
-        </ResponsiveMenu>
-      </div>
+      <StaticQuery
+        query={graphql`
+          query HeaderQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+          }
+        `}
+        render={(data) => (
+          <>
+            <Helmet>
+              <title>{pageTitle ? `${pageTitle} | ${data.site.siteMetadata.title}` : data.site.siteMetadata.title}</title>
+            </Helmet>
+            <StyledHeader>
+              <Link
+                style={{
+                  ...scale(0.4),
+                  display: "inline-block",
+                  marginTop: 0,
+                  boxShadow: "none",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+                to={"/"}
+              >{config.title}
+              </Link>
+              <ResponsiveMenuTrigger>
+                <StyledExpandIcon
+                  onClick={this.toggleMobileMenu}
+                  menuVisible={this.state.showMobileMenu}
+                >&#43;</StyledExpandIcon>
+              </ResponsiveMenuTrigger>
+            </StyledHeader>
+            <ResponsiveMenu visible={this.state.showMobileMenu}>
+              <NavLinks />
+            </ResponsiveMenu>
+          </>
+        )}
+      />
     );
   }
 }

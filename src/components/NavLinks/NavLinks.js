@@ -44,30 +44,15 @@ export default function NavLinks() {
   return (
     <span>
       <StyledNavLink
-        to="/things"
-        title="We hope you like!"
-        activeStyle={{ color: 'rgba(0,0,0,1)'}}
-      >things we made</StyledNavLink>
-      <StyledNavLink
-        activeStyle={{ color: 'rgba(0,0,0,1)'}}
-        to="/help-us-help-you"
-        title="We would like to help you out!"
-      >what we can do for you</StyledNavLink>
-      <StyledNavLink
         to="/about"
         title="About"
         activeStyle={{ color: 'rgba(0,0,0,1)'}}
-      >about</StyledNavLink>
+      >About</StyledNavLink>
       <StyledNavLink
         to="/contact"
         title="Contact"
         activeStyle={{ color: 'rgba(0,0,0,1)'}}
-      >contact</StyledNavLink>
-      <StyledSecondaryNavLink
-        to="/subscribe"
-        title="subscribe"
-        activeStyle={{ color: 'rgba(0,0,0,1)'}}
-      >Newsletter</StyledSecondaryNavLink>
+      >Contact</StyledNavLink>
       <StyledSecondaryNavLink
         to="/rss.xml"
         title="RSS"

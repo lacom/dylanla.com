@@ -1,10 +1,12 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import get from 'lodash/get';
+import { path } from 'ramda';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import { NewsletterSignup } from '../components';
+import Layout from '../components/Layout';
+import config from '../config';
 
 
 // Styled components
@@ -14,18 +16,18 @@ const ContentContainer = styled.div`
 `;
 
 
-export default function Subscribe({ data }) {
-  const siteTitle = get(data, 'site.siteMetadata.title');
+export default function Subscribe({ data, location }) {
+  const siteTitle = path(['site', 'siteMetadata', 'title'], data);
 
   return (
-    <div>
+    <Layout location={location}>
       <Helmet title={siteTitle} />
       <ContentContainer>
         <h1>Newsletter</h1>
-        <p>Stay up to date with articles and projects we publish by subscribing to our newsletter.</p>
+        <p>{config.newsletterSignupMessage}</p>
         <NewsletterSignup />
       </ContentContainer>
-    </div>
+    </Layout>
   );
 };
 

@@ -1,49 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
-import get from 'lodash/get';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import { Header, ArticleCard } from '../components';
-import { rhythm } from '../utils/typography';
+import Layout from '../components/Layout';
+import { ArticleCard } from '../components';
 import media from '../utils/mediaQueryTemplates';
 
 
 // Styled components
 const StyledWall = styled.div`
-  columns: 1;
   /* Center content on xsmall devices */
-  display: flex;
-  justify-content: center;  
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1em;
+  padding: 3em;
 
   ${media.small`
-    display: block;
-    columns: 2;
-    column-gap: 15px;    
+    padding: 0;
+    grid-template-columns: 20em 20em 20em;
+    grid-gap: 1em;
   `}
 
   ${media.medium`
-    columns: 3;
-  `}
-
-  ${media.large`
-    columns: 4;
+    padding: 0;
+    grid-template-columns: 20em 20em 20em;
+    grid-gap: 2em;
   `}
 `;
 
 
-export default function BlogIndex({ data }) {
-  const siteTitle = get(data, 'site.siteMetadata.title');
+export default function BlogIndex({ data, location }) {
   const { edges: posts } = data.allMarkdownRemark;
 
   return (
-    <div>
-      <Helmet title={siteTitle} />
+    <Layout location={location}>
       <StyledWall>
         {posts.map(({ node: post}) => (<ArticleCard key={post.id} post={post} />))}
       </StyledWall>
-    </div>
+    </Layout>
   );
 };
 
@@ -53,12 +47,12 @@ BlogIndex.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    site {
-      siteMetadata {
-        title
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC },
+      filter: {
+        frontmatter: { draft: { eq: false } }
       }
-    }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    ) {
       edges {
         node {
           id
@@ -72,8 +66,8 @@ export const pageQuery = graphql`
             type
             featuredImage {
               childImageSharp {
-                sizes(maxWidth: 640) {
-                  ...GatsbyImageSharpSizes
+                fluid(maxWidth: 640) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

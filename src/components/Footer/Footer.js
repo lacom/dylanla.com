@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 import config from '../../config';
@@ -23,7 +22,7 @@ export default function Footer() {
   return (
     <StyledFooter>
       <div>
-        &copy; {config.title} Inc.
+        &copy; {new Date().getFullYear()} {config.title}
       </div>
     </StyledFooter>
   );

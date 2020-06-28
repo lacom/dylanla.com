@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
 import styled from 'styled-components';
 
 import { Footer, Header, Sidebar } from '../components';
@@ -17,24 +16,24 @@ const StyledContentLayout = styled.div`
   min-height: 95vh;
 `;
 const StyledContent = styled.div`
+  position: relative;
   width: 100%;
-  padding: 1em;
-  margin-top: 50px;
+  padding-top: 60px;
+  padding-bottom: 2em;
 
-  ${media.xsmall`
-    margin-top: 0px;
-    padding: 2em;
+  ${media.small`
+    padding-top: 35px;
   `}
 `;
 
-export default function Template({ children, location }) {
+export default function Layout({ children, location, pageTitle }) {
   return (
     <StyledLayoutContainer>
-      <Header location={location} />
+      <Header location={location} pageTitle={pageTitle} />
       <StyledContentLayout>
         <Sidebar />
         <StyledContent>
-          {children()}
+          {children}
         </StyledContent>
       </StyledContentLayout>
       <Footer />
@@ -42,7 +41,6 @@ export default function Template({ children, location }) {
   );
 };
 
-Template.propTypes = {
-  children: PropTypes.func,
+Layout.propTypes = {
   location: PropTypes.object.isRequired,
 };

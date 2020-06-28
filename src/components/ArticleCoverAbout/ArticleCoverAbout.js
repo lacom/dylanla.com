@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
@@ -28,7 +28,7 @@ export default function ArticleCoverAbout({ text, img }) {
       <h3>About the Cover</h3>
       <ContentContainer>
         <div>
-          <CoverImage sizes={img.childImageSharp.sizes} />
+          <CoverImage fluid={img.childImageSharp.fluid} />
         </div>
         <div>
           <p>{text}</p>

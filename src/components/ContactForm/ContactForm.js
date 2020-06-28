@@ -10,8 +10,8 @@ export default function ContactForm() {
       action={config.formActionURL}
       method="POST"
     >
-      <input type="text" name="name" placeholder="Name" />
-      <input htmlFor="email" name="_replyto" placeholder="Email Address" />
+      <input type="text" name="name" placeholder="Your name" />
+      <input htmlFor="email" name="_replyto" placeholder="Email address" />
       <input type="text" name="_subject" placeholder="Subject" />
       <textarea name="message" placeholder="Message"></textarea>
       <input type="hidden" name="_next" value={config.formSubmittedURL} />

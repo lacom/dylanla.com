@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import twitterLogoSrc from '../../images/twitter.svg';
 import facebookLogoSrc from '../../images/facebook.svg';
 import config from '../../config';
+import { Link } from 'gatsby';
 
 
 // Styled components
@@ -53,6 +54,9 @@ const SocialShareLinksList = styled.ul`
     display: block;
   }  
 `;
+const ContactLinkContainer = styled.div`
+  color: #c1c1c1;
+`;
 
 export default class ArticleFooter extends Component {
   static propTypes = {
@@ -79,31 +83,36 @@ export default class ArticleFooter extends Component {
     const url = `${config.url}${path}`;
 
     return (
-      <StyledArticleFooter>
-        <FooterLeftContent>
-          <span>By {authors.join(', ')}</span>
-        </FooterLeftContent>
-        <FooterRightContent>
-          <SocialShareLinksList>
-            <li>
-              <a
-                className="social-share-link-twitter"
-                href={`https://twitter.com/intent/tweet?text=${encodedTitle}&amp;url=${url}`}
-                onClick={this.handleTwitterClick}
-                style={{ backgroundImage: `url(${twitterLogoSrc})` }}
-              >Tweet</a>
-            </li>
-            <li>
-              <a
-                className="social-share-link-facebook"
-                href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
-                onClick={this.handleFacebookClick}
-                style={{ backgroundImage: `url(${facebookLogoSrc})` }}
-              >Share</a>
-            </li>
-          </SocialShareLinksList>
-        </FooterRightContent>
-      </StyledArticleFooter>
+      <div>
+        <StyledArticleFooter>
+          <FooterLeftContent>
+            <span>{authors.join(', ')}</span>
+          </FooterLeftContent>
+          <FooterRightContent>
+            <SocialShareLinksList>
+              <li>
+                <a
+                  className="social-share-link-twitter"
+                  href={`https://twitter.com/intent/tweet?text=${encodedTitle}&amp;url=${url}`}
+                  onClick={this.handleTwitterClick}
+                  style={{ backgroundImage: `url(${twitterLogoSrc})` }}
+                >Tweet</a>
+              </li>
+              <li>
+                <a
+                  className="social-share-link-facebook"
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
+                  onClick={this.handleFacebookClick}
+                  style={{ backgroundImage: `url(${facebookLogoSrc})` }}
+                >Share</a>
+              </li>
+            </SocialShareLinksList>
+          </FooterRightContent>
+        </StyledArticleFooter>
+        <ContactLinkContainer>
+          <Link to="/contact" title="Contact">Send me a message here</Link>
+        </ContactLinkContainer>
+      </div>
     );
   }
 }

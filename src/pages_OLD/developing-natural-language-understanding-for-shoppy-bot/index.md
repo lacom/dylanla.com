@@ -3,7 +3,7 @@ title: Developing the Natural Language Understanding Behind Shoppy Bot
 date: "2017-10-26T00:00:00.000Z"
 type: post
 authors: ["Carl Mueller"]
-draft: false
+draft: true
 featuredImage: "./lichen_canny_edge.png"
 coverDesc: "The cover started as a photo of lichen on rock to which we applied canny edge detection to outline the texture of the rock and plant."
 tags: ["shoppy bot", "natural language understanding"]

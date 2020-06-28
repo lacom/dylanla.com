@@ -1,72 +1,40 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import { ClientsList } from '../components';
+import Layout from '../components/Layout';
 
 // Styled components
 const ContentContainer = styled.div`
   max-width: 40em;
-  padding: 1.5em 0;
+  padding: 0 1em;
 `;
 
-export default function About({ data }) {
-  const siteTitle = get(data, 'site.siteMetadata.title');
-  const clients = get(data, 'site.siteMetadata.clients');
-
+export default function About({ location }) {
   return (
-    <div>
-      <Helmet title={siteTitle} />
+    <Layout location={location}>
       <ContentContainer>
-        <h1>Lightning in a Bot is a technology business located in lovely Los Angeles, California.</h1>
+        <h1>About</h1>
         <section>
-          <p>Co-founders Dylan La Com and Carl Mueller started Lightning in a Bot in 2016 driven by the mission of using cutting-edge technology to help small businesses work smarter and be more productive.</p>
-          <p>We believe technology should help people make more impactful contributions to the things that matter in their lives.</p>
-          <p>We serve clients in a variety of industries, but our specialty is in technology solutions for retail businesses.</p>
+          <p>Dylan La Com is a software engineer, entrepreneur, inventor and tinkerer based in Los Angeles, California.</p>
+          <p>Currently, Dylan is the tech lead at a retail technology company called <a href="https://www.shoptiques.com/" title="Shoptiques">Shoptiques</a>. Dylan is also the owner of a technology startup called <a href="https://lightninginabot.com" title="Lightning in a Bot">Lightning in a Bot</a>, which developed the Shoppy Bot product, a novel reporting software for ecommerce businesses.</p>
         </section>
         <section>
-          <p>Some of our wonderful clients include:</p>
-          <ClientsList clients={clients} images={data.allFile.edges} />
+          <h3>Links</h3>
+          <h5>Social</h5>
+          <ul>
+            <li><a href="https://twitter.com/dylanlacom">Twitter</a></li>
+            <li><a href="https://github.com/lacom">Github</a></li>
+          </ul>
+          <h5>Other</h5>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=rBpaUICxEhk">Life is NOT a Journey - Alan Watts</a></li>
+          </ul>
         </section>
         <section>
           <h3>About this website</h3>
-          <p>This is a static website built with <a href="https://reactjs.org/" target="_blank" title="React">React</a> and <a href="https://www.gatsbyjs.org/" target="_blank" title="gatsbyjs">Gatsby JS</a>. It's served to you blazingly fast via <a href="https://aws.amazon.com/" target="_blank" title="AWS">AWS</a>. The code for this site is open source and available on <a href="https://github.com/lightninginabot/liab_website" title="Github" target="_blank">Github</a>.</p> 
+          <p>This is a static website built with <a href="https://reactjs.org/" target="_blank" rel="noreferrer" title="React">React</a> and <a href="https://www.gatsbyjs.org/" target="_blank" rel="noreferrer" title="gatsbyjs">Gatsby JS</a>. It's served to you super fast via <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer" title="AWS">AWS</a>. The code for this site is open source and available on <a href="https://github.com/lightninginabot/liab_website" title="Github" target="_blank" rel="noreferrer">Github</a>.</p> 
         </section>
       </ContentContainer>
-    </div>
+    </Layout>
   );
 };
-
-About.propTypes = {
-  data: PropTypes.object.isRequired
-};
-
-export const pageQuery = graphql`
-  query AboutQuery {
-    site {
-      siteMetadata {
-        title
-        clients {
-          name
-          image
-          url
-        }
-      }
-    }
-    # Fetch all images from the client_logos filesystem query directory
-    allFile(filter: { sourceInstanceName: {eq: "client_logos" }}) {
-      edges {
-        node {
-          childImageSharp {
-            sizes(maxWidth: 120) {
-              ...GatsbyImageSharpSizes
-              originalName
-            }
-          }
-        }
-      }
-    }    
-  }
-`;

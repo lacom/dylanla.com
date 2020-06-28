@@ -1,7 +1,7 @@
 const path = require('path');
 
-exports.createPages = async ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
 
   const blogPost = path.resolve('./src/templates/blog-post.js');
   const result = await graphql(`
@@ -34,8 +34,8 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
 
 // Adds a 'slug' to node.field prop
 // See: https://www.gatsbyjs.org/docs/migrating-from-v0-to-v1/#create-slugs-for-markdown-files
-exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
-  const { createNodeField } = boundActionCreators;
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
   let slug;
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent);

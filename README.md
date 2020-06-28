@@ -1,6 +1,6 @@
-# Lightning in a Bot website
+# Dylan La Com's personal site
 
-[lightninginabot.com](https://lightninginabot.com)
+[dylan-la.com](https://dylan-la.com)
 
 ## Running Gatsby in development
-`gatsby develop`
+`./node_modules/.bin/gatsby develop` or `npm run dev`

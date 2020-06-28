@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { readableColor, rgba } from 'polished';
 import Img from 'gatsby-image';
 
-import { rhythm, scale } from '../../utils/typography';
 import media from '../../utils/mediaQueryTemplates';
 
 
@@ -76,14 +75,14 @@ const ArticleCardContent = styled.span`
 const ArticleCardTitle = styled.h2`
   margin-bottom: auto;
   color: ${readableColor('#000')}
-  font-size: 2.3em;
-  line-height: 1.1em; 
-
-  ${media.xsmall`
-    font-size: 2.7em;
-  `} 
+  font-size: 2.7em;
+  line-height: 1.1em;
+  word-wrap: normal;
+  padding-top: 0.5em;
+ 
   ${media.small`
     font-size: 2.1em;
+    padding-top: 0;
   `}
 `;
 const ArticleCardMeta = styled.span`
@@ -108,7 +107,7 @@ export default class ArticleCard extends Component {
 
     return (
       <StyledArticle size={size}>
-        {featuredImage && (<ArticleImage sizes={featuredImage.childImageSharp.sizes} />)}
+        {featuredImage && (<ArticleImage fluid={featuredImage.childImageSharp.fluid} />)}
         <ArticleCardLink to={slug}>
           <ArticleCardContent>
             <ArticleCardTitle>{title}</ArticleCardTitle>

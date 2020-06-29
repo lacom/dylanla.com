@@ -22,6 +22,7 @@ const StyledHeader = styled.header`
   height 50px;
   z-index: 9999;
   border-bottom: 1px solid black;
+  background-color: #fffdf9;
 
   ${media.xsmall`
     width: 300px;
@@ -33,7 +34,7 @@ const StyledHeader = styled.header`
   `}
 `;
 const ResponsiveMenuTrigger = styled.div`
-  width: 12%;
+  width: 3em;
   position: absolute;
   right: 0;
 

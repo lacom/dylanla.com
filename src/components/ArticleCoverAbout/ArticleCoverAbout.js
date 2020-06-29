@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 
+import media from '../../utils/mediaQueryTemplates';
+
 
 // Styled components
 const Container = styled.div`
-  margin-top: 2em;
   background: #f1eee9;
   padding: 1em;
   color: #ababab;
@@ -17,9 +18,12 @@ const ContentContainer = styled.div`
 `;
 const CoverImage = styled(Img)`
   width: 100px;
-  height: 100%;
   vertical-align: middle;
-  margin: 0 2em 0 0;
+  margin: 0 1em 0 0;
+
+  ${media.small`
+    margin-right: 2em;
+  `}
 `;
 
 export default function ArticleCoverAbout({ text, img }) {

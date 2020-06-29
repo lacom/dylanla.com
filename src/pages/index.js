@@ -13,7 +13,7 @@ const StyledWall = styled.div`
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1em;
-  padding: 3em;
+  padding: 1em;
 
   ${media.small`
     padding: 0;
@@ -22,7 +22,6 @@ const StyledWall = styled.div`
   `}
 
   ${media.medium`
-    padding: 0;
     grid-template-columns: 20em 20em 20em;
     grid-gap: 2em;
   `}

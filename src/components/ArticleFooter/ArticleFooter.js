@@ -56,6 +56,7 @@ const SocialShareLinksList = styled.ul`
 `;
 const ContactLinkContainer = styled.div`
   color: #ababab;
+  padding: 1em 0;
 `;
 
 export default class ArticleFooter extends Component {

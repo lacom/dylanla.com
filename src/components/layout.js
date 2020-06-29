@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 import { Footer, Header, Sidebar } from '../components';
 import media from '../utils/mediaQueryTemplates';
+
+// Import styles
+import '../utils/typography';
 import '../css/main.css';
 
 // Styled components

@@ -74,14 +74,14 @@ const ArticleCardContent = styled.span`
 `;
 const ArticleCardTitle = styled.h2`
   margin-bottom: auto;
-  color: ${readableColor('#000')}
+  color: ${readableColor('#000')};
   font-size: 2.7em;
   line-height: 1.1em;
   word-wrap: normal;
   padding-top: 0.5em;
  
   ${media.small`
-    font-size: 2.1em;
+    font-size: 2em;
     padding-top: 0;
   `}
 `;

@@ -5,8 +5,9 @@ html {
   height: 100%;
 }
 body {
-  background: #FFF;
+  background: #fffdf9;
   height: inherit;
+  margin: 0;
 }
 #___gatsby {
   height: inherit;

@@ -11,14 +11,14 @@ import { Link } from 'gatsby';
 // Styled components
 const StyledArticleFooter = styled.div`
   display: flex;
-  color: #c1c1c1;
+  color: #ababab;
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.02em;
 
   & a {
-    color: #c1c1c1;
+    color: #ababab;
     text-decoration: none;    
   }
 
@@ -55,7 +55,7 @@ const SocialShareLinksList = styled.ul`
   }  
 `;
 const ContactLinkContainer = styled.div`
-  color: #c1c1c1;
+  color: #ababab;
 `;
 
 export default class ArticleFooter extends Component {
@@ -93,7 +93,7 @@ export default class ArticleFooter extends Component {
               <li>
                 <a
                   className="social-share-link-twitter"
-                  href={`https://twitter.com/intent/tweet?text=${encodedTitle}&amp;url=${url}`}
+                  href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${url}`}
                   onClick={this.handleTwitterClick}
                   style={{ backgroundImage: `url(${twitterLogoSrc})` }}
                 >Tweet</a>
@@ -110,7 +110,7 @@ export default class ArticleFooter extends Component {
           </FooterRightContent>
         </StyledArticleFooter>
         <ContactLinkContainer>
-          <Link to="/contact" title="Contact">Send me a message here</Link>
+          Have something to say? <Link to="/contact" title="Contact">Send me a message</Link>.
         </ContactLinkContainer>
       </div>
     );

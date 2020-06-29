@@ -7,9 +7,9 @@ import Img from 'gatsby-image';
 // Styled components
 const Container = styled.div`
   margin-top: 2em;
-  background: #f7f7f7;
+  background: #f1eee9;
   padding: 1em;
-  color: #c1c1c1;
+  color: #ababab;
 `;
 const ContentContainer = styled.div`
   display: flex;

@@ -19,7 +19,6 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: #FFF;
   height 50px;
   z-index: 9999;
   border-bottom: 1px solid black;

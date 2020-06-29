@@ -7,9 +7,9 @@ import media from '../../utils/mediaQueryTemplates';
 
 // Styled components
 const StyledFooter = styled.footer`
-  background: #f7f7f7;
+  background: #f1eee9;
   min-height: 5vh;
-  color: #c1c1c1;
+  color: #ababab;
   padding: 1em 1em;
   font-size: 0.9rem;
 

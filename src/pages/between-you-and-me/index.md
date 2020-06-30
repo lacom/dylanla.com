@@ -3,7 +3,7 @@ title: Between You and Me
 date: "2020-06-28T22:00:00.000Z"
 type: post
 authors: ["Dylan La Com"]
-draft: false
+draft: true
 featuredImage: "./between-you-and-me.png"
 coverDesc: "Canny edge detection is an algorithm that is used to detect the edges, or outline, of a subject in an image. It also removes all color from the picture in the process."
 tags: []

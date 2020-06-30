@@ -52,7 +52,37 @@ module.exports = {
     },
     {
       // RSS feed
-      resolve: 'gatsby-plugin-feed'
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        feeds: [
+          {
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: {
+                    frontmatter: { draft: { eq: false } }
+                  }
+                ) {
+                  edges {
+                    node {
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                        authors
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Dylan La Com\' RSS feed',
+          },
+        ],
+      },
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',

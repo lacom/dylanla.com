@@ -17,16 +17,16 @@ Here are a few of my favorite memories or highlights from Shoppy Bot:
 * Driving up to Carl's house in Santa Barbara with Matt and Ian in May of 2016 to sign the incorporation paperwork. Talk about a Dream Team.
 * Launching Shoppy Bot on the Shopify app store and getting featured on their homepage.
 * Seeing Carl develop his machine learning skillset to create our Natural Language Processing technology.
-* Meeting many, many amazing business owners, like Ashley Ragovin running Pour This, Kenny Borg and Nick Brucculeri running The Social Life, and David Burke running Great Lakes. It was truly inspiring to be working with these and other incredible humans all doing really cool things.
-* Of course, the many interesting technologis we worked on, including chat bots, language processing, reporting and analytics
+* Meeting many, many amazing business owners, like Ashley running Pour This, Kenny and Nick running The Social Life, and David running Great Lakes. It was truly inspiring to be working with these and other incredible humans all doing really cool things.
+* Of course, the many interesting technologies we worked on, including chat bots, language processing, reporting and analytics.
 
 In many ways, Shoppy Bot is a major reason I am where I am today. It was an incredible period of growth and learning for me. And, from a career standpoint, it helped me leapfrog into job positions and opportunities that I don't think I would have otherwise gotten.
 
 So what's next for me?
 
-I want to get back in touch with my sense of curiousity, and let myself go down some rabbit holes. One skill I'd like to improve is my writing, hence I've dusting off this website you're reading right now. I also want to spend time thinking about other projects. Some old––things I've wanted to do for a while––and some new. And I'm starting with one very specific question...
+I want to get back in touch with my sense of curiousity, and let myself go down some rabbit holes. One skill I'd like to improve is my writing, hence I'm dusting off this website you're reading right now. I also want to spend time thinking about other projects. Some old––things I've wanted to do for a while––and some new. And I'm starting with one very specific question...
 
-"What are the most important problems in my field, and why aren’t I working on them?"
+What are the most important problems in my field, and why am I not working on them?
 
 This question can be traced back to Bell Labs and a [speech by Turing Award winner Richard Hamming](http://www.cs.virginia.edu/~robins/YouAndYourResearch.html) given in 1986. It comes up ever so often in the writing of other inspiring figures, including Paul Graham in his 2005 essay ["Good and Bad Procrastination"](http://www.paulgraham.com/procrastination.html). More recently, Sam Altman of Y Combinator and OpenAI [wrote](https://blog.samaltman.com/researchers-and-founders), "In general, no one reflects on this question enough, but the best people do it the most".
 

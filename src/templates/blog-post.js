@@ -95,9 +95,14 @@ export default function BlogPostTemplate({ data, location }) {
             img={post.frontmatter.featuredImage}
           />
         </Article>
-        <CoverImageContainer>
-          <CoverImage fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
-        </CoverImageContainer>
+        {post.frontmatter.featuredImage
+          ? (
+            <CoverImageContainer>
+              <CoverImage fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
+            </CoverImageContainer>
+          )
+          : null
+        }
       </ArticleContainer>
     </Layout>
   );

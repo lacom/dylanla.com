@@ -32,7 +32,7 @@ export default function ArticleCoverAbout({ text, img }) {
       <h3>About the Cover</h3>
       <ContentContainer>
         <div>
-          <CoverImage fluid={img.childImageSharp.fluid} />
+          {img ? (<CoverImage fluid={img.childImageSharp.fluid} />) : null}
         </div>
         <div>
           <p>{text}</p>

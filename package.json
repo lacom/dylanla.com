@@ -51,7 +51,7 @@
     "serve": "gatsby serve",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && s3-deploy './public/**' --cwd './public/' --bucket www.dylan-la.com  --deleteRemoved --gzip --profile default && npm run clear",
+    "deploy": "gatsby build --prefix-paths && s3-deploy './public/**' --cwd './public/' --bucket www.dylanla.com  --deleteRemoved --gzip --profile default && npm run clear",
     "clear": "aws-cloudfront-invalidate E1YTDQN5752D05",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   },

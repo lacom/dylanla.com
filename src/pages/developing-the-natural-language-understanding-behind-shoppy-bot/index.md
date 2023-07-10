@@ -9,8 +9,8 @@ coverDesc: "The cover started as a photo of lichen on rock to which we applied c
 tags: ["shoppy bot", "natural language understanding"]
 ---
 
-**June 23rd, 2023 update**: 
-This post by my Shoppy Bot cofounder [Carl Mueller](https://www.carl-mueller.com) was originally published in 2017 on the Shoppy Bot company blog. Given the advances in natural language products in recent years, and the excitement around technology such as ChatGPT, I wanted to republish this article so that it may hopefully be useful to others who are building in the space.
+**Update July 2023**:
+This post by my Shoppy Bot cofounder [Carl Mueller](https://www.carl-mueller.com) was originally published on our Shoppy Bot company blog. When closing down a company or project, often a lot of great work gets discarded or simply disappears. Some things are worth keeping around, though, and I think this article is one of those things.
 
 ---
 

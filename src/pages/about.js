@@ -16,7 +16,7 @@ export default function About({ location }) {
         <h1>About</h1>
         <section>
           <p>Dylan La Com is a software engineer, entrepreneur, inventor and tinkerer based in Los Angeles, California.</p>
-          <p>Currently, Dylan is the tech lead at a retail technology company called <a href="https://www.shoptiques.com/" title="Shoptiques">Shoptiques</a>. Dylan is also the owner of a technology startup called <a href="https://lightninginabot.com" title="Lightning in a Bot">Lightning in a Bot</a>, which developed the Shoppy Bot product, a novel reporting software for ecommerce businesses.</p>
+          <p>Currently, Dylan is the tech lead at a retail technology company called <a href="https://www.materialretail.com/" title="Material">Material</a>. Previously, Dylan founded the technology startup Lightning in a Bot Inc., which developed the <a href="https://www.dylanla.com/developing-the-natural-language-understanding-behind-shoppy-bot/" title="Developing the Natural Language Understanding Behind Shoppy Bot">Shoppy Bot</a> product, a novel reporting software for ecommerce businesses.</p>
         </section>
         <section>
           <h3>Links</h3>

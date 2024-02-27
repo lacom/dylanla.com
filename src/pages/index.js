@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import { ArticleCard } from '../components';
@@ -11,18 +12,25 @@ import media from '../utils/mediaQueryTemplates';
 const StyledWall = styled.div`
   /* Center content on xsmall devices */
   display: grid;
-  grid-template-columns: 100%;
+  max-width: 1200px;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
   padding: 1em;
+  margin: 0 1em;
+
+  ${media.xsmall`
+    padding: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
 
   ${media.small`
     padding: 0;
-    grid-template-columns: 20em 20em 20em;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1em;
   `}
 
   ${media.medium`
-    grid-template-columns: 20em 20em 20em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 2em;
   `}
 `;
@@ -65,9 +73,7 @@ export const pageQuery = graphql`
             type
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 640) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData
               }
             }
           }

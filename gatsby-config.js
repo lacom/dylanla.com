@@ -35,27 +35,45 @@ module.exports = {
               wrapperStyle: 'margin-bottom: 1.0725rem',
             },
           },
+          {
+            resolve: 'gatsby-remark-video',
+            options: {
+              width: 640,
+              height: 'auto',
+              preload: 'auto',
+              muted: true,
+              autoplay: true,
+              playsinline: true,
+              controls: true,
+              loop: true
+            }
+          },
           "gatsby-remark-prismjs",
           "gatsby-remark-copy-linked-files",
           "gatsby-remark-smartypants",
         ],
       },
     },
+    'gatsby-plugin-image',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: 'UA-80332066-1',
-        head: true,
-      },
-    },
     {
       // RSS feed
       resolve: 'gatsby-plugin-feed',
       options: {
         feeds: [
           {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.html }],
+                })
+              })
+            },
             query: `
               {
                 allMarkdownRemark(
@@ -84,7 +102,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-postcss',
     'gatsby-plugin-styled-components',

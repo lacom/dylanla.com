@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Footer, Header, Sidebar } from '../components';
+import { Footer, Sidebar } from '../components';
 import media from '../utils/mediaQueryTemplates';
 
 // Import styles
@@ -24,6 +24,10 @@ const StyledContent = styled.div`
   padding-top: 60px;
   padding-bottom: 2em;
 
+  ${media.xsmall`
+    padding-left: 300px;
+  `}
+
   ${media.small`
     padding-top: 35px;
   `}
@@ -32,9 +36,8 @@ const StyledContent = styled.div`
 export default function Layout({ children, location, pageTitle }) {
   return (
     <StyledLayoutContainer>
-      <Header location={location} pageTitle={pageTitle} />
       <StyledContentLayout>
-        <Sidebar />
+        <Sidebar location={location} pageTitle={pageTitle} />
         <StyledContent>
           {children}
         </StyledContent>

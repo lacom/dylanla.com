@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image"
+import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 import { ArticleCoverAbout, ArticleFooter } from '../components';
@@ -23,6 +24,7 @@ const Article = styled.div`
   max-width: 100%;
   flex-shrink: 0;
   flex-grow: 0;
+  display: none;
   
   ${media.small`
     max-width: 40em;
@@ -54,9 +56,11 @@ const CoverImageContainer = styled.div`
     display: block;
   `}
 `;
-const CoverImage = styled(Img)`
+const CoverImage = styled(GatsbyImage)`
   width: 640px;
   overflow-x: hidden;
+  & img {
+  }
 `;
 const PostContent = styled.div`
   & img {
@@ -98,7 +102,10 @@ export default function BlogPostTemplate({ data, location }) {
         {post.frontmatter.featuredImage
           ? (
             <CoverImageContainer>
-              <CoverImage fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
+              <CoverImage
+                image={post.frontmatter.featuredImage.childImageSharp.gatsbyImageData}
+                alt={post.frontmatter.title}
+              />
             </CoverImageContainer>
           )
           : null
@@ -127,9 +134,7 @@ export const pageQuery = graphql`
         coverDesc
         featuredImage {
           childImageSharp {
-            fluid(maxHeight: 1000) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData
           }
         }
       }

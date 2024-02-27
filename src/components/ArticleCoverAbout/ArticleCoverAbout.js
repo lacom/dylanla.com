@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import media from '../../utils/mediaQueryTemplates';
 
@@ -16,7 +16,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
-const CoverImage = styled(Img)`
+const CoverImage = styled(GatsbyImage)`
   width: 100px;
   vertical-align: middle;
   margin: 0 1em 0 0;
@@ -32,7 +32,13 @@ export default function ArticleCoverAbout({ text, img }) {
       <h3>About the Cover</h3>
       <ContentContainer>
         <div>
-          {img ? (<CoverImage fluid={img.childImageSharp.fluid} />) : null}
+          {img
+            ? (
+              <CoverImage
+                image={img.childImageSharp.gatsbyImageData}
+                alt="Cover image"
+              />
+              ) : null}
         </div>
         <div>
           <p>{text}</p>

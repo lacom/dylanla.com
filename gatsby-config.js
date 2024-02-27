@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Dylan La Com',
-    siteUrl: 'https://dylan-la.com',
-    description: 'Dylan La Com\'s blog',
+    siteUrl: 'https://www.dylanla.com',
+    description: 'Dylan La Com\'s website',
   },
   pathPrefix: '/',
   plugins: [
@@ -55,8 +55,25 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        }
+      }
+    },
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       // RSS feed
       resolve: 'gatsby-plugin-feed',
@@ -64,20 +81,21 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
+              return allMarkdownRemark.edges.map(({ node }) => {
+                return {
+                  ...node.frontmatter,
+                  // description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
-                })
+                };
               })
             },
             query: `
               {
                 allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: { frontmatter: { date: DESC }},
                   filter: {
                     frontmatter: { draft: { eq: false } }
                   }
@@ -97,7 +115,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Dylan La Com\' RSS feed',
+            title: 'Dylan La Com\' website RSS feed',
           },
         ],
       },

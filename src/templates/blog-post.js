@@ -20,11 +20,10 @@ const ArticleContainer = styled.div`
     padding: 0;
   `}
 `;
-const Article = styled.div`
+const Article = styled.article`
   max-width: 100%;
   flex-shrink: 0;
   flex-grow: 0;
-  display: none;
   
   ${media.small`
     max-width: 40em;

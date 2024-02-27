@@ -7,7 +7,7 @@ import media from '../../utils/mediaQueryTemplates';
 
 
 // Styled components
-const StyledSidebar = styled.div`
+const StyledSidebar = styled.aside`
   display: none;
   
   ${media.xsmall`

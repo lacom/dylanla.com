@@ -13,7 +13,7 @@ export default function Contact({ location }) {
   return (
     <Layout location={location}>
       <ContentContainer>
-        <h1>Hello friend. Leave me a message...</h1>    
+        <h1>Send me a message</h1>
         <section>
           <ContactForm />
         </section>

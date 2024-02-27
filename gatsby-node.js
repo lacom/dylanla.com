@@ -1,4 +1,5 @@
 const path = require('path');
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -36,19 +37,15 @@ exports.createPages = async ({ graphql, actions }) => {
 // See: https://www.gatsbyjs.org/docs/migrating-from-v0-to-v1/#create-slugs-for-markdown-files
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  let slug;
+
   if (node.internal.type === 'MarkdownRemark') {
-    const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (parsedFilePath.name !== 'index' && parsedFilePath.dir !== '') {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === '') {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
-    }
+    const value = createFilePath({ node, getNode });
 
     // Add slug as a field on the node.
-    createNodeField({ node, name: 'slug', value: slug });
+    createNodeField({
+      name: 'slug',
+      node,
+      value,
+    });
   }
 };

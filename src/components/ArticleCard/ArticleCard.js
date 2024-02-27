@@ -124,9 +124,6 @@ export default function ArticleCard({ post, size }) {
       return;
     }
 
-    // Add view transition name to element
-    // coverImgRef.current.style.viewTransitionName = 'article-cover';
-
     // Navigate with transition
     document.startViewTransition(() => {
       flushSync(() => {

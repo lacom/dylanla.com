@@ -9,7 +9,7 @@ import media from '../../utils/mediaQueryTemplates';
 // Styled components
 const StyledSidebar = styled.aside`
   display: none;
-  
+
   ${media.xsmall`
     position: fixed;
     display: flex;
@@ -22,6 +22,11 @@ const StyledSidebar = styled.aside`
   `} 
 `;
 const StyledNav = styled.nav`
+  display: none;
+
+  ${media.xsmall`
+    display: flex;
+  `} 
 `;
 
 export default function Sidebar({ location, pageTitle }) {

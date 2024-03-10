@@ -111,7 +111,7 @@ export default class ArticleFooter extends Component {
           </FooterRightContent>
         </StyledArticleFooter>
         <ContactLinkContainer>
-          Have something to say? <Link to="/contact" title="Contact">Send me a message</Link>.
+          Have a comment? <Link to="/contact" title="Contact">Write me a message</Link>.
         </ContactLinkContainer>
       </div>
     );

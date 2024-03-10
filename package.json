@@ -1,10 +1,9 @@
 {
   "name": "dylan-lacom-personal-site",
-  "description": "Dylan La Com's blog at https://dylanla.com",
+  "description": "Dylan La Com's blog at https://www.dylanla.com",
   "version": "1.0.0",
   "author": "Dylan La Com <dylan.lacom@gmail.com>",
   "dependencies": {
-    "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.13.3",
     "gatsby-plugin-feed": "^5.13.1",
     "gatsby-plugin-image": "^3.13.1",
@@ -48,7 +47,7 @@
     "serve": "gatsby serve",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && s3-deploy './public/**' --cwd './public/' --bucket www.dylanla.com --deleteRemoved --gzip --profile default --distId E1YTDQN5752D05 --invalidate '/*'",
+    "deploy": "gatsby build --prefix-paths && s3-deploy './public/**' --cwd './public/' --bucket www.dylanla.com --deleteRemoved --gzip xml,html,htm,js,css,ttf,otf,svg,txt --profile default --distId E1YTDQN5752D05 --invalidate '/*'",
     "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   },
   "devDependencies": {

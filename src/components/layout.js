@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Footer, Sidebar } from '../components';
+import { Footer, Sidebar } from '.';
 import media from '../utils/mediaQueryTemplates';
 
 // Import styles
 import '../utils/typography';
 import '../css/main.css';
+import MobileHeader from './Header/MobileHeader';
 
 // Styled components
 const StyledLayoutContainer = styled.div`
@@ -21,7 +22,7 @@ const StyledContentLayout = styled.div`
 const StyledContent = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 60px;
+  padding-top: 70px;
   padding-bottom: 2em;
 
   ${media.xsmall`
@@ -36,6 +37,7 @@ const StyledContent = styled.div`
 export default function Layout({ children, location, pageTitle }) {
   return (
     <StyledLayoutContainer>
+      <MobileHeader />
       <StyledContentLayout>
         <Sidebar location={location} pageTitle={pageTitle} />
         <StyledContent>

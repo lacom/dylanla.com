@@ -13,9 +13,9 @@ export default function Contact({ location }) {
   return (
     <Layout location={location}>
       <ContentContainer>
-        <h1>Send me a message</h1>
+        <h1>Get in touch</h1>
         <section>
-          <ContactForm />
+          DM me on X/Twitter <a title="@dylanlacom" href="https://twitter.com/dylanlacom">@dylanlacom</a> or email fullname at gmail dot com.
         </section>
       </ContentContainer>
     </Layout>

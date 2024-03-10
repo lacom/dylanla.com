@@ -16,10 +16,10 @@ const StyledWall = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 1em;
   padding: 1em;
-  margin: 0 1em;
 
   ${media.xsmall`
     padding: 0;
+    margin: 0 1em;
     grid-template-columns: 1fr 1fr 1fr;
   `}
 
